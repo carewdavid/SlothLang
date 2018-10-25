@@ -19,7 +19,7 @@ int main(){
   printf("TESTING PARSER (2/3)\n");
   //Make sure all the instruction codes are in the parsed program
 #define NUM_CODES 11
-  int histogram[NUM_CODES] = {0,0,0,0,0,0,0,0,0,0,0};
+  int histogram[NUM_CODES] = {0,0,0,0,0,0,0,1,0,0,0};
   int i = 0;
   int pc = program->codes[i];
   while(pc != 0){
