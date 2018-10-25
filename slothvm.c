@@ -103,18 +103,18 @@ int execute(struct sloth_program* sbin){
       }
       case INP: {
         pc++;
+        printf(">");
 
         switch(P[pc]){
           case INT: {
             int x;
-            printf(">");
             scanf("%d", &x);
             spush(S, x);
             break;
           }
           case CHR: {
             char x;
-            scanf(">%c", &x);
+            scanf("%c", &x);
             spush(S, (int)x);
             break;
           }
