@@ -29,7 +29,8 @@ enum compCodes {
 
 enum typeCode {
   INT = 0x01,
-  CHR = 0x02
+  CHR = 0x02,
+  MEM = 0x03
 };
 
 typedef uint8_t ubyte;

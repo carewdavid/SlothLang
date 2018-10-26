@@ -5,8 +5,11 @@
 #include "lib/stack.h"
 #include "lib/throw.h"
 
+#define MEMORY_SIZE 1024
+
 int execute(struct sloth_program* sbin){
   sstack_t S = sstack_new();
+  ubyte* memory = malloc(sizeof(int) * MEMORY_SIZE);
   size_t pc = 0;
 
   ubyte* P = sbin->codes;
@@ -16,6 +19,7 @@ int execute(struct sloth_program* sbin){
     // sprint(S);
     switch(P[pc]){
       case EXIT: {
+	free(memory);
         if(sstack_empty(S)){
           sstack_free(S);
           return 0;
@@ -118,6 +122,11 @@ int execute(struct sloth_program* sbin){
             spush(S, (int)x);
             break;
           }
+	case MEM: {
+	  int addr = spop(S);
+	  spush(S, memory[addr]);
+	  break;
+	}
           default: {
             opErr("input type", P[pc]);
           }
@@ -140,6 +149,12 @@ int execute(struct sloth_program* sbin){
             printf("%c", x);
             break;
           }
+	  case MEM: {
+	    int addr = spop(S);
+	    int x = spop(S);
+	    memory[addr] = x;
+	    break;
+	  }
           default: {
             opErr("output type", P[pc]);
           }

@@ -70,6 +70,11 @@ Note: the `and` operator is used to separate arguments.
 **Effect:** reads in either an integer or an ASCII character from standard in.  
 **Stack:** `S -> S, x`
 
+or
+
+**Effect:** pop the top value off the stack and push the value at that address in memory onto the stack.
+**Stack:** `S, x -> S, M[x]`
+
 ### Output \<t>
   
 **Syntax:** `sloth * 8 and sloth * t`
@@ -78,6 +83,12 @@ Note: the `and` operator is used to separate arguments.
 
 **Effect:** pops the top value off the stack and writes it to standard out.  
 **Stack:** `S, x -> S`  
+
+or
+
+**Effect:** pop the first two values off the stack and write the second one to memory at the address pointed to by the first.
+**Stack:** `S, y, x -> S`
+**Memory:** `M[x] = y`
 
 ### GOTO \<n>
   
@@ -123,6 +134,7 @@ Type Codes `<t>` are used in the **Input** and **Output** instructions in order 
 |-----------|--------------------------|
 | `0x01`    | A signed integer value   |
 | `0x02`    | A single ASCII character |
+| `0x03`    | Memory operation         |
 
 ### Operation Codes
 Sloth code is read in by the SlothVM as bytecode. The following is the bytecode for each SlothLang instruction.
