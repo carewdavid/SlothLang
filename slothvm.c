@@ -175,6 +175,15 @@ int execute(struct sloth_program* sbin){
         pc++;
         break;
       }
+      case SWAP: {
+          int x = spop(S);
+          int y = spop(S);
+
+          spush(S, x);
+          spush(S, y);
+          pc++;
+          break;
+      }
       default: {
         opErr("operation", P[pc]);
       }

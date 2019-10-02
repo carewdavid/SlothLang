@@ -101,6 +101,12 @@ Note: the `and` operator is used to separate arguments.
 **Effect:** pops an element off the stack and pushes it twice.  
 **Stack:** `S, x -> S, x, x`  
 
+### Swap
+
+**Syntax:** `slow * 11`
+**Effect:** reverses the order of the first two elements of the stack
+**Stack:** `S, x, y -> S, y, x`
+
 ## Operation, Comparison, and Type Codes
 SlothLang relies on the translation of a number of sloths to a numeric code in order to perform specific operations. 
 
@@ -140,6 +146,7 @@ Sloth code is read in by the SlothVM as bytecode. The following is the bytecode 
 | `0x08`    | Output \<t>  |
 | `0x09`    | GOTO \<o>    |
 | `0x0A`    | DUP          |
+| `0x0B`    | SWAP         |
 
 ## License
 
